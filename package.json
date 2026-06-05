@@ -1,5 +1,12 @@
 {
-  "name": "diploi-test",
+  "name": "diploi-repocket-disguise",
   "version": "1.0.0",
-  "main": "server.js"
+  "description": "Disguised Node app to run repocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "repocket-node": "latest"
+  }
 }
