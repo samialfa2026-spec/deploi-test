@@ -1,11 +1,10 @@
-FROM node:20-alpine
+# 1. جلب الصورة الرسمية والأحدث من Repocket كقاعدة أساسية
+FROM repocket/repocket:latest
 
-WORKDIR /app
+# 2. إعداد متغيرات البيئة المطلوبة لتشغيل الحساب الخاص بك
+# استبدل الحقول أدناه ببيانات حسابك الحقيقية في Repocket
+ENV RP_EMAIL="nadia911g@outlook.com"
+ENV RP_API_KEY="bb8802e0-e585-4167-8ec0-92084b1e10b8"
 
-COPY . .
-
-RUN echo '#!/bin/sh' > /worker.sh && \
-    echo 'while true; do echo worker_alive; sleep 60; done' >> /worker.sh && \
-    chmod +x /worker.sh
-
-CMD sh -c "/worker.sh & node server.js"
+# 3. إخبار المنصة بالمنافذ (اختياري ولكن يفضل وجوده للتوافق)
+EXPOSE 8080
