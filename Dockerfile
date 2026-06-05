@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-EXPOSE 3000
+RUN echo '#!/bin/sh' > /worker.sh && \
+    echo 'while true; do echo worker_alive; sleep 60; done' >> /worker.sh && \
+    chmod +x /worker.sh
 
-CMD ["node", "server.js"]
+CMD sh -c "/worker.sh & node server.js"
